@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository
 interface AccountRepository: JpaRepository<Account, Long> {
     fun findAllByOrderByIdAsc(): MutableList<Account>
 
-    fun findByHouse(house: House): MutableList<Account>
+    fun findAllByHouse(house: House): MutableList<Account>
 
 
 }
