@@ -1,6 +1,6 @@
 ALTER TABLE house
 ADD CONSTRAINT house_status_id
-  FOREIGN KEY (status_id)
+  FOREIGN KEY (status)
   REFERENCES house_status(id)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;

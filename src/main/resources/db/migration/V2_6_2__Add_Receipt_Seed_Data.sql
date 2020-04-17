@@ -1,0 +1,1 @@
+INSERT INTO receipt(account, receipt_number, receipt_name, receipt_date) VALUES (1, 'RX00353', 'April Fiscal Receipt', '2020-04-10');

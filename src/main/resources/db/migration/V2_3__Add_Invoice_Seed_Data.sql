@@ -1,0 +1,1 @@
+INSERT INTO invoice(account, invoice_number, invoice_amount, invoice_date, status_id) VALUES (1, 1, 23000, '2020-02-09', 1);
