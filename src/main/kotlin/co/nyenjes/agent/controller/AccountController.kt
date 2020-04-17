@@ -18,8 +18,8 @@ class AccountController(private val accountRepository: AccountRepository) {
     @GetMapping("/house/{id}")
     fun getAccountByHouseId(@PathVariable id: Long): MutableList<Account> {
         val house = House(id = id)
-        val response = accountRepository.findByHouse(house)
-        logger.info { "getAllAccounts : ${response}" }
+        val response = accountRepository.findAllByHouse(house)
+        logger.info { "getAllAccountsByHouseId : ${response}" }
         return response
     }
 

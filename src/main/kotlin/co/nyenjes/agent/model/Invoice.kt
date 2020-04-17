@@ -1,5 +1,7 @@
 package co.nyenjes.agent.model
 
+import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
@@ -10,8 +12,9 @@ class Invoice(
     @JsonProperty("id")
     @GeneratedValue(strategy = GenerationType.IDENTITY) @Id @NotBlank @Column(name = "id") var id: Long = 0,
 
-    @JsonProperty("acccount")
+    @JsonProperty("account")
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "account")
     var account: Account? = null,
 
@@ -27,9 +30,10 @@ class Invoice(
     @Column(name = "invoice_amount")
     var invoiceAmount: String? = null,
 
-    @JsonProperty("invoice_status")
-    @Column(name = "invoice_status")
-    var invoiceDescription: String? = null,
+    @JsonProperty("status")
+    @OneToOne
+    @JoinColumn(name = "status")
+    var status: InvoiceStatus? = null,
 
     @JsonProperty("water_payment")
     @Column(name = "water_payment")

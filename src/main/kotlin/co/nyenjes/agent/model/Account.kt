@@ -1,8 +1,9 @@
 package co.nyenjes.agent.model
 
+import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.persistence.*
-import javax.persistence.FetchType.EAGER
 import javax.validation.constraints.NotBlank
 
 @Entity
@@ -17,13 +18,13 @@ class Account(
     var house: House? = null,
 
     @JsonProperty("invoice")
-    @OneToMany
-    @JoinColumn(name = "invoice")
+    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+    @JsonIgnore
     var invoice: Set<Invoice>? = HashSet<Invoice>(),
 
     @JsonProperty("receipt")
-    @OneToMany
-    @JoinColumn(name = "receipt")
+    @OneToMany(mappedBy = "account", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @JsonIgnore
     var receipt: Set<Receipt>? = HashSet<Receipt>()
 
 )

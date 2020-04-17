@@ -1,5 +1,6 @@
 package co.nyenjes.agent.model
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
@@ -12,6 +13,7 @@ class Receipt(
 
     @JsonProperty("account")
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "account")
     var account: Account? = null,
 
@@ -26,6 +28,4 @@ class Receipt(
     @JsonProperty("receipt_date")
     @Column(name = "receipt_date")
     var receiptDate: String? = null
-
-
 )

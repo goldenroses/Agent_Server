@@ -1,1 +1,4 @@
-INSERT INTO invoice(account, invoice_number, invoice_amount, invoice_date, status_id) VALUES (1, 1, 23000, '2020-02-09', 1);
+INSERT INTO invoice(account, invoice_number, invoice_amount, invoice_date, status,amenities_payment,invoice_name,security_payment,water_payment) VALUES (1, 1, 23000, '2020-01-30', 1, '300', 'January Invoice', '200', '1300');
+INSERT INTO invoice(account, invoice_number, invoice_amount, invoice_date, status,amenities_payment,invoice_name,security_payment,water_payment) VALUES (1, 1, 23000, '2020-02-30', 1, '300', 'February Invoice', '200', '1300');
+INSERT INTO invoice(account, invoice_number, invoice_amount, invoice_date, status,amenities_payment,invoice_name,security_payment,water_payment) VALUES (2, 1, 23000, '2020-02-30', 2, '300', 'February Invoice', '200', '1300');
+INSERT INTO invoice(account, invoice_number, invoice_amount, invoice_date, status,amenities_payment,invoice_name,security_payment,water_payment) VALUES (2, 1, 23000, '2020-02-30', 3, '300', 'February Invoice', '200', '1300');
