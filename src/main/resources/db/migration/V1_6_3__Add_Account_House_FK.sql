@@ -1,6 +1,6 @@
-ALTER TABLE account
-ADD CONSTRAINT house
-  FOREIGN KEY (house)
-  REFERENCES house(id)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
+-- ALTER TABLE account
+-- ADD CONSTRAINT house
+--   FOREIGN KEY (house)
+--   REFERENCES house(id)
+--   ON DELETE NO ACTION
+--   ON UPDATE NO ACTION;

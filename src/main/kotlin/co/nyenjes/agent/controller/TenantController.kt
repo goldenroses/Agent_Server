@@ -49,20 +49,20 @@ class TenantController(private val tenantRepository: TenantRepository) {
         val updatedTenantJsonString = Gson().toJson(updatedTenant, Tenant::class.java)
         val updatedTenantEntity = Gson().fromJson(updatedTenantJsonString, Tenant::class.java)
 
-        if (request["nationalId"] != null) {
+        if (request["tenantName"] != null) {
             updatedTenantEntity.tenantName = request["tenantName"] as String
         }
-        if (request["kraPin"] != null) {
-            updatedTenantEntity.tenantMobile = request["tenantDescription"] as String
+        if (request["tenantMobile"] != null) {
+            updatedTenantEntity.tenantMobile = request["tenantMobile"] as String
         }
-        if (request["policeClearance"] != null) {
-            updatedTenantEntity.tenantNationalId = request["tenantLocation"] as String
+        if (request["tenantNationalId"] != null) {
+            updatedTenantEntity.tenantNationalId = request["tenantNationalId"] as String
         }
-        if (request["processingCertificate"] != null) {
-            updatedTenantEntity.tenantAgreement = request["tenantNumberOfHouses"] as String
+        if (request["tenantAgreement"] != null) {
+            updatedTenantEntity.tenantAgreement = request["tenantAgreement"] as String
         }
-        if (request["passportPhoto"] != null) {
-            updatedTenantEntity.tenantEmail = request["tenantOwner"] as String
+        if (request["tenantEmail"] != null) {
+            updatedTenantEntity.tenantEmail = request["tenantEmail"] as String
         }
 
         logger.info { "updateTenant : ${updatedTenantEntity}" }

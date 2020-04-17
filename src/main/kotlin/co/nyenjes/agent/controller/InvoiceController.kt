@@ -1,6 +1,6 @@
 package co.nyenjes.agent.controller
 
-import co.nyenjes.agent.model.Account
+import co.nyenjes.agent.model.House
 import co.nyenjes.agent.model.Invoice
 import co.nyenjes.agent.repository.InvoiceRepository
 import com.google.gson.Gson
@@ -15,10 +15,10 @@ private val logger = KotlinLogging.logger {}
 @RequestMapping("/invoice")
 class InvoiceController(private val invoiceRepository: InvoiceRepository) {
 
-    @GetMapping("/account/{id}")
-    fun getAllInvoicesByAccount(@PathVariable id: Long): MutableList<Invoice> {
-        val account = Account(id = id)
-        val response = invoiceRepository.findAllByAccount(account)
+    @GetMapping("/house/{id}")
+    fun getAllInvoicesByHouse(@PathVariable id: Long): MutableList<Invoice> {
+        val house = House(id = id)
+        val response = invoiceRepository.findAllByHouse(house)
         logger.info { "getAllInvoices : ${response}" }
         return response
     }
@@ -33,10 +33,8 @@ class InvoiceController(private val invoiceRepository: InvoiceRepository) {
         return response
     }
 
-    @PostMapping
+    @PostMapping("/house/{id}")
     fun createInvoice(@Valid @RequestBody request: Invoice): ResponseEntity<Invoice> {
-        val jsonRequest = Gson().toJson(request)
-        logger.info { "createInvoice : ${jsonRequest}" }
         val response = invoiceRepository.save(request)
         logger.info { "createInvoice : ${response}" }
         return ResponseEntity.ok(response)

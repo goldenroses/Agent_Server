@@ -1,5 +1,6 @@
 package co.nyenjes.agent.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
@@ -14,6 +15,11 @@ class House(
     @OneToOne
     @JoinColumn(name = "building_id")
     var buildingId: Building? = null,
+
+    @JsonProperty("tenant")
+    @OneToOne
+    @JoinColumn(name = "tenant")
+    var tenant: Tenant? = null,
 
     @JsonProperty("house_name")
     @Column(name = "house_name")
@@ -30,5 +36,14 @@ class House(
     @JsonProperty("status")
     @OneToOne
     @JoinColumn(name = "status")
-    var status: HouseStatus? = null
+    var status: HouseStatus? = null,
+    @JsonProperty("invoice")
+    @OneToMany(mappedBy = "house", fetch = FetchType.EAGER)
+    @JsonIgnore
+    var invoice: Set<Invoice>? = HashSet<Invoice>(),
+
+    @JsonProperty("receipt")
+    @OneToMany(mappedBy = "house", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @JsonIgnore
+    var receipt: Set<Receipt>? = HashSet<Receipt>()
 )

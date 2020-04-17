@@ -1,0 +1,4 @@
+ALTER TABLE receipt
+ADD CONSTRAINT house
+FOREIGN KEY (house)
+REFERENCES house(id);
