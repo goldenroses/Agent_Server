@@ -1,0 +1,2 @@
+INSERT INTO building(building_name,building_location,building_description,building_owner,building_number_of_houses,building_registration_date) VALUES ('Gateway Flats','Kinoo','Four house building, in the leafy surburbs of Kinoo','Kibunja',4,'2018-12-01');
+INSERT INTO building(building_name,building_location,building_description,building_owner,building_number_of_houses,building_registration_date) VALUES ('Mithanga Apartments','Kinoo','12 houses, clean and well maintained','Kibunja',14,'2018-12-01');

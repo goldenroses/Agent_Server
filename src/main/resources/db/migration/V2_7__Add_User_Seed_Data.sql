@@ -1,0 +1,6 @@
+INSERT INTO "user"(active,username,password,non_expired,enabled,credentials_non_expired,non_locked) VALUES (1,'admin','{bcrypt}$2a$10$HM1b81CAXSx.oYkf3iPvROi8Bangpn4WE3G9hp/5uyyKsGo6zl0ge',true,true,true,true);
+INSERT INTO "user"(active,username,password,non_expired,enabled,credentials_non_expired,non_locked) VALUES (1,'rose','{bcrypt}$2a$10$HM1b81CAXSx.oYkf3iPvROi8Bangpn4WE3G9hp/5uyyKsGo6zl0ge',true,true,true,true);
+INSERT INTO "user"(active,username,password,non_expired,enabled,credentials_non_expired,non_locked) VALUES (1,'sam','{bcrypt}$2a$10$HM1b81CAXSx.oYkf3iPvROi8Bangpn4WE3G9hp/5uyyKsGo6zl0ge',true,true,true,true);
+INSERT INTO "user"(active,username,password,non_expired,enabled,credentials_non_expired,non_locked) VALUES (1,'user','{bcrypt}$2a$10$HM1b81CAXSx.oYkf3iPvROi8Bangpn4WE3G9hp/5uyyKsGo6zl0ge',true,true,true,true);
+INSERT INTO "user"(active,username,password,non_expired,enabled,credentials_non_expired,non_locked) VALUES (1,'rose_user','{bcrypt}$2a$10$HM1b81CAXSx.oYkf3iPvROi8Bangpn4WE3G9hp/5uyyKsGo6zl0ge',true,true,true,true);
+INSERT INTO "user"(active,username,password,non_expired,enabled,credentials_non_expired,non_locked) VALUES (1,'sam_user','{bcrypt}$2a$10$HM1b81CAXSx.oYkf3iPvROi8Bangpn4WE3G9hp/5uyyKsGo6zl0ge',true,true,true,true);

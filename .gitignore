@@ -1,0 +1,8 @@
+.idea
+build
+gradlew.bat
+gradlew
+.gradle
+*.pid
+application.pid
+src/main/resources/google/

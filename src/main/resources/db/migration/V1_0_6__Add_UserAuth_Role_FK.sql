@@ -1,0 +1,6 @@
+-- ALTER TABLE user_auth
+-- ADD CONSTRAINT role_id
+--   FOREIGN KEY (role_id)
+--   REFERENCES role (id)
+--   ON DELETE NO ACTION
+--   ON UPDATE NO ACTION;

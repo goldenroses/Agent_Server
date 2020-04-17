@@ -1,0 +1,6 @@
+ALTER TABLE house
+ADD CONSTRAINT building_id
+  FOREIGN KEY (building_id)
+  REFERENCES building (id)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
