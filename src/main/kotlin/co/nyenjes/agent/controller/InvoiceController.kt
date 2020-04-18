@@ -1,7 +1,8 @@
 package co.nyenjes.agent.controller
 
-import co.nyenjes.agent.model.Account
+import co.nyenjes.agent.model.House
 import co.nyenjes.agent.model.Invoice
+import co.nyenjes.agent.model.InvoiceStatus
 import co.nyenjes.agent.repository.InvoiceRepository
 import com.google.gson.Gson
 import mu.KotlinLogging
@@ -15,11 +16,27 @@ private val logger = KotlinLogging.logger {}
 @RequestMapping("/invoice")
 class InvoiceController(private val invoiceRepository: InvoiceRepository) {
 
-    @GetMapping("/account/{id}")
-    fun getAllInvoicesByAccount(@PathVariable id: Long): MutableList<Invoice> {
-        val account = Account(id = id)
-        val response = invoiceRepository.findAllByAccount(account)
+    @GetMapping("/house/{id}")
+    fun getAllInvoicesByHouse(@PathVariable id: Long): MutableList<Invoice> {
+        val house = House(id = id)
+        val response = invoiceRepository.findAllByHouse(house)
         logger.info { "getAllInvoices : ${response}" }
+        return response
+    }
+
+    @PatchMapping("/house/{houseId}")
+    fun createInvoiceToHouse(@Valid @RequestBody request: Invoice, @PathVariable houseId: Long): ResponseEntity<Invoice>? {
+        val item = invoiceRepository.save(request)
+        logger.info { "updateHouse : ${item}" }
+
+        return ResponseEntity.ok().body(invoiceRepository.save(request))
+    }
+
+    @GetMapping("/building/{id}")
+    fun getAllInvoiceByBuildingId(@PathVariable id: Long): Any {
+        val response = invoiceRepository.findAllInvoicesByBuildingId(id)
+
+        logger.info { "getInvoiceById : ${response}" }
         return response
     }
 
@@ -33,13 +50,48 @@ class InvoiceController(private val invoiceRepository: InvoiceRepository) {
         return response
     }
 
-    @PostMapping
+    @PostMapping("/house")
     fun createInvoice(@Valid @RequestBody request: Invoice): ResponseEntity<Invoice> {
-        val jsonRequest = Gson().toJson(request)
-        logger.info { "createInvoice : ${jsonRequest}" }
         val response = invoiceRepository.save(request)
         logger.info { "createInvoice : ${response}" }
         return ResponseEntity.ok(response)
+    }
+
+    @PatchMapping("/{id}")
+    fun updateInvoiceStatus(@Valid @RequestBody request: Map<String, Any>, @PathVariable id: Long): ResponseEntity<Invoice> {
+        val jsonRequest = Gson().toJson(request)
+        logger.info { "updateInvoice : ${jsonRequest}" }
+        val item = invoiceRepository.findById(id)
+        val updatedInvoice = item.get()
+        val updatedInvoiceJsonString = Gson().toJson(updatedInvoice, Invoice::class.java)
+        val updatedInvoiceEntity = Gson().fromJson(updatedInvoiceJsonString, Invoice::class.java)
+
+        if (request["status"] != null) {
+            val status = InvoiceStatus(id = request["status"].toString().toLong())
+            updatedInvoiceEntity.status = status
+        }
+        if (request["invoiceAmount"] != null) {
+            updatedInvoiceEntity.invoiceAmount = request["invoiceAmount"] as String
+        }
+        if (request["amenitiesPayment"] != null) {
+            updatedInvoiceEntity.amenitiesPayment = request["amenitiesPayment"] as String
+        }
+        if (request["invoiceName"] != null) {
+            updatedInvoiceEntity.invoiceName = request["invoiceName"] as String
+        }
+        if (request["invoiceNumber"] != null) {
+            updatedInvoiceEntity.invoiceNumber = request["invoiceNumber"] as String
+        }
+        if (request["securityPayment"] != null) {
+            updatedInvoiceEntity.securityPayment = request["securityPayment"] as String
+        }
+        if (request["waterPayment"] != null) {
+            updatedInvoiceEntity.waterPayment = request["waterPayment"] as String
+        }
+        val response = invoiceRepository.save(updatedInvoiceEntity)
+        logger.info { "createInvoice : ${response}" }
+        return ResponseEntity.ok().body(response)
+
     }
 
 //    @PatchMapping("/{id}")

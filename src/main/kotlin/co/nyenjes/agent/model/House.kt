@@ -1,5 +1,6 @@
 package co.nyenjes.agent.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
@@ -14,6 +15,11 @@ class House(
     @OneToOne
     @JoinColumn(name = "building_id")
     var buildingId: Building? = null,
+
+    @JsonProperty("tenant")
+    @OneToOne
+    @JoinColumn(name = "tenant")
+    var tenant: Tenant? = null,
 
     @JsonProperty("house_name")
     @Column(name = "house_name")

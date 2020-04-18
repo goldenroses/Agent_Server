@@ -1,0 +1,3 @@
+INSERT INTO tenant(tenant_name, tenant_mobile, tenant_national_id, tenant_agreement,tenant_email) VALUES ('Jorge Amarni', '073348294', '34284884', 'Signed', 'jorgeK@gmail.com');
+INSERT INTO tenant(tenant_name, tenant_mobile, tenant_national_id, tenant_agreement,tenant_email) VALUES ('Betty Maranga', '0788452253', '234434', 'Signed', 'jorgeK@gmail.com');
+INSERT INTO tenant(tenant_name, tenant_mobile, tenant_national_id, tenant_agreement,tenant_email) VALUES ('Kate Wangi', '0798345294', '26442342', 'Signed', 'jijiHaolod@gmail.com');

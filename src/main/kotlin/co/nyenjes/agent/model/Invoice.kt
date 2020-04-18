@@ -12,11 +12,11 @@ class Invoice(
     @JsonProperty("id")
     @GeneratedValue(strategy = GenerationType.IDENTITY) @Id @NotBlank @Column(name = "id") var id: Long = 0,
 
-    @JsonProperty("account")
+    @JsonProperty("house")
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name = "account")
-    var account: Account? = null,
+    @JoinColumn(name = "house")
+    var house: House? = null,
 
     @JsonProperty("invoice_name")
     @Column(name = "invoice_name")

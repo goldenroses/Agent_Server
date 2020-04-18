@@ -1,2 +1,0 @@
-INSERT INTO receipt(account, receipt_number, receipt_name, receipt_date) VALUES (1, 'RX00353', 'January Fiscal Receipt', '2020-04-10');
-INSERT INTO receipt(account, receipt_number, receipt_name, receipt_date) VALUES (2, 'REC0023', 'February Fiscal Receipt', '2020-04-10');
