@@ -52,7 +52,7 @@ class HouseController(private val houseRepository: HouseRepository) {
         return ResponseEntity.ok(response)
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/updateTenant/{id}")
     fun addTenantToHouse(@Valid @RequestBody request: Map<String, Any>, @PathVariable id: Long): ResponseEntity<House>? {
         val jsonRequest = Gson().toJson(request)
         logger.info { "updateHouse : ${jsonRequest}" }

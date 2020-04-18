@@ -36,14 +36,5 @@ class House(
     @JsonProperty("status")
     @OneToOne
     @JoinColumn(name = "status")
-    var status: HouseStatus? = null,
-    @JsonProperty("invoice")
-    @OneToMany(mappedBy = "house", fetch = FetchType.EAGER)
-    @JsonIgnore
-    var invoice: Set<Invoice>? = HashSet<Invoice>(),
-
-    @JsonProperty("receipt")
-    @OneToMany(mappedBy = "house", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
-    @JsonIgnore
-    var receipt: Set<Receipt>? = HashSet<Receipt>()
+    var status: HouseStatus? = null
 )

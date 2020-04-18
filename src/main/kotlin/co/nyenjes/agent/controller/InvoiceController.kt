@@ -23,6 +23,14 @@ class InvoiceController(private val invoiceRepository: InvoiceRepository) {
         return response
     }
 
+    @GetMapping("/building/{id}")
+    fun getAllInvoiceByBuildingId(@PathVariable id: Long): Any {
+        val response = invoiceRepository.findAllInvoicesByBuildingId(id)
+
+        logger.info { "getInvoiceById : ${response}" }
+        return response
+    }
+
     @GetMapping("/{id}")
     fun getInvoiceById(@PathVariable id: Long): ResponseEntity<Invoice> {
         val response = invoiceRepository.findById(id).map { invoice ->
