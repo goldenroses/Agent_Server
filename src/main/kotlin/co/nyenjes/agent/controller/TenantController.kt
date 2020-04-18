@@ -31,6 +31,13 @@ class TenantController(private val tenantRepository: TenantRepository) {
         return response
     }
 
+    @GetMapping("/house/{id}")
+    fun getTenantInHouse(@PathVariable id: Long): Any {
+        val response = tenantRepository.findTenantByHouseId(id)
+        logger.info { "getAllTenants : ${response}" }
+        return response
+    }
+
     @PostMapping
     fun createTenant(@Valid @RequestBody request: Tenant): ResponseEntity<Tenant> {
         val jsonRequest = Gson().toJson(request)

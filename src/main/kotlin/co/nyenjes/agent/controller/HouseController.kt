@@ -1,9 +1,6 @@
 package co.nyenjes.agent.controller
 
-import co.nyenjes.agent.model.Building
-import co.nyenjes.agent.model.House
-import co.nyenjes.agent.model.HouseStatus
-import co.nyenjes.agent.model.Tenant
+import co.nyenjes.agent.model.*
 import co.nyenjes.agent.repository.HouseRepository
 import com.google.gson.Gson
 import mu.KotlinLogging
@@ -52,17 +49,17 @@ class HouseController(private val houseRepository: HouseRepository) {
         return ResponseEntity.ok(response)
     }
 
-    @PatchMapping("/updateTenant/{id}")
-    fun addTenantToHouse(@Valid @RequestBody request: Map<String, Any>, @PathVariable id: Long): ResponseEntity<House>? {
+    @PatchMapping("/updateTenant/{houseId}")
+    fun addTenantToHouse(@Valid @RequestBody request: Map<String, Any>, @PathVariable houseId: Long): ResponseEntity<House>? {
         val jsonRequest = Gson().toJson(request)
         logger.info { "updateHouse : ${jsonRequest}" }
-        val item = houseRepository.findById(id)
+        val item = houseRepository.findById(houseId)
         val updatedHouse = item.get()
         val updatedHouseJsonString = Gson().toJson(updatedHouse, House::class.java)
         val updatedHouseEntity = Gson().fromJson(updatedHouseJsonString, House::class.java)
 
-        if (request["tenant"] != null) {
-            val tenant = Tenant(id = request["tenant"].toString().toLong())
+        if (request["tenantId"] != null) {
+            val tenant = Tenant(id = request["tenantId"].toString().toLong())
             updatedHouseEntity.tenant = tenant
         }
 
